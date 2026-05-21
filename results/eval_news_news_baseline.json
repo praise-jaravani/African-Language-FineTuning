@@ -1,0 +1,20 @@
+{
+  "task": "news",
+  "checkpoint": "/content/drive/MyDrive/csc5035z-a2/checkpoints/news_baseline",
+  "test_macro_f1": 0.8640855219612105,
+  "per_class_f1": {
+    "entertainment": 0.8253968253968254,
+    "health": 0.8536585365853658,
+    "politics": 0.8571428571428571,
+    "religion": 0.8064516129032258,
+    "sports": 0.9777777777777777
+  },
+  "label_names": [
+    "entertainment",
+    "health",
+    "politics",
+    "religion",
+    "sports"
+  ],
+  "timestamp": "2026-05-20T18:31:22.439774"
+}

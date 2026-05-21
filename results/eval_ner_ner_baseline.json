@@ -1,0 +1,17 @@
+{
+  "task": "ner",
+  "checkpoint": "/content/drive/MyDrive/csc5035z-a2/checkpoints/ner_baseline",
+  "test_span_f1": 0.8406762295081968,
+  "label_list": [
+    "O",
+    "B-PER",
+    "I-PER",
+    "B-ORG",
+    "I-ORG",
+    "B-LOC",
+    "I-LOC",
+    "B-DATE",
+    "I-DATE"
+  ],
+  "timestamp": "2026-05-20T18:32:27.740709"
+}

@@ -1,0 +1,171 @@
+{
+  "tokenizer_path": "checkpoints/extended_model",
+  "vocab_size": 256000,
+  "n_sentences": 8309,
+  "n_words": 198443,
+  "mean_tokens_per_word": 1.6556441900193002,
+  "median_tokens_per_word": 1.0,
+  "pct95_tokens_per_word": 4.0,
+  "distribution": {
+    "1_token": 0.6608,
+    "2_tokens": 0.1624,
+    "3_tokens": 0.0961,
+    "4+_tokens": 0.0807
+  },
+  "most_fragmented_20": [
+    [
+      "ọ̀kẹ́méjìdínláàádọ́dalélẹ́gbààrúnlélárúndínláàádọ́ta",
+      28
+    ],
+    [
+      "òjìlélẹ́gbọ̀kànléláàádọ́ta",
+      16
+    ],
+    [
+      "òjìlélẹ́gbọ̀kànléláàádọ́ta",
+      16
+    ],
+    [
+      "o̩ló̩rè̩é̩jó̩rè̩é̩",
+      16
+    ],
+    [
+      "o̩ló̩rè̩é̩jó̩rè̩é̩",
+      16
+    ],
+    [
+      "Òjìlélẹ́ẹ̀ẹ́dẹ́gbèsándínméje",
+      15
+    ],
+    [
+      "Òjìlélẹ́ẹ̀ẹ́dẹ́gbèsándínmẹ́jọ",
+      15
+    ],
+    [
+      "o̩ló̩rè̩é̩jó̩rè̩é̩",
+      15
+    ],
+    [
+      "ọló̩rè̩é̩́jò̩ré̩",
+      15
+    ],
+    [
+      "ọlọ́rè̩é̩jò̩ré̩",
+      14
+    ],
+    [
+      "OJÚOLÚWAKÒTÌMÍ",
+      13
+    ],
+    [
+      "OJÚOLÚWAKÒTÌMÍ",
+      13
+    ],
+    [
+      "OJÚOLÚWAKÒTÌMÍ",
+      13
+    ],
+    [
+      "OJÚOLÚWAKÒTÌMÍ",
+      13
+    ],
+    [
+      "mẹ́tàdínlọ́gbọ̀nléníẹgbẹ̀ta",
+      13
+    ],
+    [
+      "mẹ́tàlélógúnlélọ́ọ̀dúnrún",
+      13
+    ],
+    [
+      "Mé̩tàdínló̩gò̩rún",
+      13
+    ],
+    [
+      "Ló̩wó̩ló̩wó̩",
+      13
+    ],
+    [
+      "ọló̩rè̩é̩jò̩ré̩",
+      13
+    ],
+    [
+      "ọló̩rè̩só̩rè̩é̩",
+      13
+    ]
+  ],
+  "diacritic_words": {
+    "ọmọ": {
+      "tokens": [
+        "ọmọ"
+      ],
+      "n_tokens": 1
+    },
+    "ẹ̀kọ́": {
+      "tokens": [
+        "ẹ̀",
+        "kọ́"
+      ],
+      "n_tokens": 2
+    },
+    "Àdùnní": {
+      "tokens": [
+        "▁À",
+        "d",
+        "ùn",
+        "ní"
+      ],
+      "n_tokens": 4
+    },
+    "ìwé": {
+      "tokens": [
+        "▁ì",
+        "w",
+        "é"
+      ],
+      "n_tokens": 3
+    },
+    "oúnjẹ": {
+      "tokens": [
+        "▁o",
+        "ún",
+        "jẹ"
+      ],
+      "n_tokens": 3
+    },
+    "ìlú": {
+      "tokens": [
+        "▁ì",
+        "lú"
+      ],
+      "n_tokens": 2
+    },
+    "ẹ̀gbọ́n": {
+      "tokens": [
+        "ẹ̀",
+        "gbọ́n"
+      ],
+      "n_tokens": 2
+    },
+    "àárọ̀": {
+      "tokens": [
+        "àá",
+        "rọ̀"
+      ],
+      "n_tokens": 2
+    },
+    "ọjọ́": {
+      "tokens": [
+        "ọjọ́"
+      ],
+      "n_tokens": 1
+    },
+    "ìgbà": {
+      "tokens": [
+        "▁ì",
+        "gbà"
+      ],
+      "n_tokens": 2
+    }
+  }
+}
