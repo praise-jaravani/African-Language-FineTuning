@@ -6,3 +6,16 @@ logs/
 *.egg-info/
 .ipynb_checkpoints/
 .venv/
+Assignment 2 - CSC5035Z 2026.pdf
+assignment_text.txt
+
+results/fig_fertility.png
+results/fig_main_results.png
+results/fig_ner_entities.png
+results/fig_news_confusion.png
+results/fig_peft_comparison.png
+results/fig_fertility.png
+results/fig_main_results.png
+results/fig_ner_entities.png
+results/fig_news_confusion.png
+results/fig_fertility.png

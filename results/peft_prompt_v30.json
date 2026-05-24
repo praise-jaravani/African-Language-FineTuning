@@ -1,0 +1,27 @@
+{
+  "peft_method": "prompt",
+  "parameters": "v30",
+  "trainable_params": 13445,
+  "all_params": 140656906,
+  "efficiency_percentage": 0.009558720138490746,
+  "best_val_macro_f1": 0.15334839795707184,
+  "test_macro_f1": 0.20028107289446945,
+  "per_class_f1": {
+    "entertainment": 0.1116751269035533,
+    "health": 0.14,
+    "politics": 0.23696682464454977,
+    "religion": 0.21897810218978103,
+    "sports": 0.2937853107344633
+  },
+  "training_time_seconds": 34.77302646636963,
+  "checkpoint": "/home/mathew/Documents/Natural Language Processing/Assignment_2_group/African-Language-FineTuning/checkpoints/peft_prompt_v30",
+  "timestamp": "2026-05-24T14:36:48.917417",
+  "config": {
+    "model": "jhu-clsp/mmBERT-small",
+    "peft_method": "prompt",
+    "peft_param": "v30",
+    "lr": 5e-05,
+    "epochs": 5,
+    "batch_size": 16
+  }
+}

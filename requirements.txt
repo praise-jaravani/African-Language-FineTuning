@@ -11,3 +11,4 @@ seaborn>=0.12.0
 jupyter>=1.0.0
 accelerate>=0.27.0
 tqdm>=4.65.0
+peft>=0.19.1

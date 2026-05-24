@@ -1,0 +1,27 @@
+{
+  "peft_method": "lora",
+  "parameters": "r8",
+  "trainable_params": 1150853,
+  "all_params": 141794314,
+  "efficiency_percentage": 0.8116355074717594,
+  "best_val_macro_f1": 0.6765406173172778,
+  "test_macro_f1": 0.6614648468086426,
+  "per_class_f1": {
+    "entertainment": 0.6039603960396039,
+    "health": 0.7417218543046358,
+    "politics": 0.6872246696035242,
+    "religion": 0.37735849056603776,
+    "sports": 0.8970588235294118
+  },
+  "training_time_seconds": 66.3116626739502,
+  "checkpoint": "/home/mathew/Documents/Natural Language Processing/Assignment_2_group/African-Language-FineTuning/checkpoints/peft_lora_r8",
+  "timestamp": "2026-05-24T11:59:49.557829",
+  "config": {
+    "model": "jhu-clsp/mmBERT-small",
+    "peft_method": "lora",
+    "peft_param": "r8",
+    "lr": 5e-05,
+    "epochs": 5,
+    "batch_size": 16
+  }
+}
