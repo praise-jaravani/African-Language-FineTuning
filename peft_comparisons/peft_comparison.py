@@ -1,6 +1,6 @@
 """
 Extension D: Fine-tune mmBERT-small on MasakhaNews topic classification using PEFT methods (LoRA, IA3, Prompt Tuning).
-Saves adapter checkpoints and metrics comparing parameter efficiency.
+Saves checkpoints and metrics comparing parameter efficiency.
 
 Usage:
     python peft_comparison.py --method lora --r 8
@@ -57,6 +57,7 @@ def main():
     utils.set_seed(SEED)
     device = utils.get_device()
 
+    # output run configuration
     print("=" * 60)
     print(f"PEFT COMPARISON — MasakhaNews  [{run_name}]")
     print("=" * 60)
@@ -77,14 +78,20 @@ def main():
         label_names = features["label"].names
         _label_fn = lambda split: split["label"]
     else:
+
+
         label_names = sorted(set(dataset["train"]["category"]))
         _lbl2id = {l: i for i, l in enumerate(label_names)}
         _label_fn = lambda split: [_lbl2id[c] for c in split["category"]]
+
 
     num_labels = len(label_names)
     print(f"Labels ({num_labels}): {label_names}")
     print(f"Split sizes — train: {len(dataset['train'])}, "
           f"val: {len(dataset['validation'])}, test: {len(dataset['test'])}")
+    
+
+
 
     # 2. Load tokenizer and model
     print(f"\nLoading base tokenizer + model from {BASE_MODEL} ...")
@@ -108,8 +115,9 @@ def main():
             target_modules=["Wqkv", "Wo", "Wi"],
         )
             model = get_peft_model(model, peft_config)
-        case "ia3":
 
+
+        case "ia3":
             from peft import IA3Config, get_peft_model  
 
             peft_config = IA3Config(
@@ -119,10 +127,8 @@ def main():
         )
             model = get_peft_model(model, peft_config)
         case "prompt":
-
             from peft import PromptTuningConfig, get_peft_model
 
-            from peft import PromptTuningConfig, get_peft_model
             peft_config = PromptTuningConfig(
                 task_type="SEQ_CLS",
                 num_virtual_tokens=args.num_virtual_tokens,
@@ -137,6 +143,8 @@ def main():
     print(f"  Trainable params: {trainable_params:,} / {all_params:,} ({efficiency_pct:.4f}%)")
 
     model = model.to(device)
+
+
 
     # 4. Prepare data loaders
     print("Tokenising ...")
@@ -155,6 +163,8 @@ def main():
     val_loader = make_loader("validation", shuffle=False)
     test_loader = make_loader("test", shuffle=False)
 
+
+
     # 5. Optimizer, steps, and scheduler
     optimizer = AdamW(model.parameters(), lr=args.lr, weight_decay=WEIGHT_DECAY)
     total_steps = len(train_loader) * args.epochs
@@ -165,6 +175,10 @@ def main():
     patience_cnt = 0
     training_start_time = time.time()
 
+
+
+
+
     print("\nStarting PEFT training ...")
     for epoch in range(1, args.epochs + 1):
         epoch_start = time.time()
@@ -174,6 +188,8 @@ def main():
         epoch_duration = time.time() - epoch_start
 
         print(f"Epoch {epoch:2d} | loss={train_loss:.4f} | val_macro_f1={val_f1:.4f} | time={epoch_duration:.1f}s", end="")
+
+
 
         if val_f1 > best_val_f1:
             best_val_f1 = val_f1
@@ -191,6 +207,9 @@ def main():
     total_training_time = time.time() - training_start_time
     print(f"\nTraining completed in {total_training_time:.1f}s.")
 
+
+
+
     # 7. Load best adapter checkpoint for evaluation (gotcha-proof loading)
     print(f"\nLoading best adapter from {ckpt_path} ...")
     from peft import PeftModel
@@ -199,6 +218,9 @@ def main():
     )
     model = PeftModel.from_pretrained(base_model, ckpt_path).to(device)
     model.eval()
+
+
+
 
     # 8. Test split evaluation
     print("Evaluating on test split ...")
@@ -211,6 +233,8 @@ def main():
     print("=" * 60)
     print(f"Test Macro-F1: {test_f1:.4f}\n")
     print(classification_report(test_lbls, test_preds, target_names=label_names, zero_division=0))
+
+
 
     # 9. Save metrics
     metrics = {
@@ -226,6 +250,7 @@ def main():
         "checkpoint": ckpt_path,
     }
 
+
     config_dict = {
         "model": BASE_MODEL,
         "peft_method": args.method,
@@ -236,6 +261,9 @@ def main():
     }
     utils.save_results(run_name, metrics, config_dict)
     print(f"PEFT run summary | test_f1={test_f1:.4f} | trainable_pct={efficiency_pct:.4f}%")
+
+
+
 
 
 if __name__ == "__main__":
