@@ -69,7 +69,7 @@ def main():
     print(f"  Device:               {device}")
     print("=" * 60)
 
-    # 1. Load dataset
+    # 1. Load the MasakhaNews dataset
     print("\nLoading dataset ...")
     dataset = load_dataset(NEWS_DATASET, LANGUAGE)
     features = dataset["train"].features
@@ -93,14 +93,14 @@ def main():
 
 
 
-    # 2. Load tokenizer and model
+    # 2. Load the tokenizer and mmBERT-small baseline model.
     print(f"\nLoading base tokenizer + model from {BASE_MODEL} ...")
     tokenizer = AutoTokenizer.from_pretrained(BASE_MODEL)
     model = AutoModelForSequenceClassification.from_pretrained(
         BASE_MODEL, num_labels=num_labels, ignore_mismatched_sizes=True
     )
 
-    # 3. Apply PEFT Configuration
+    # 3. Apply the PEFT configuration
     match args.method:
         case "lora":
 
@@ -146,7 +146,7 @@ def main():
 
 
 
-    # 4. Prepare data loaders
+    # 4. Preparation steps for training loop (preparing data loaders, optimizers, steps, schedulers)
     print("Tokenising ...")
     def make_loader(split_name: str, shuffle: bool) -> DataLoader:
         split = dataset[split_name]
@@ -163,21 +163,14 @@ def main():
     val_loader = make_loader("validation", shuffle=False)
     test_loader = make_loader("test", shuffle=False)
 
-
-
-    # 5. Optimizer, steps, and scheduler
     optimizer = AdamW(model.parameters(), lr=args.lr, weight_decay=WEIGHT_DECAY)
     total_steps = len(train_loader) * args.epochs
     scheduler = utils.get_scheduler(optimizer, WARMUP_STEPS, total_steps)
 
-    # 6. Training Loop with early stopping
+    # 6. Execute the training loop with early stoppage
     best_val_f1 = 0.0
     patience_cnt = 0
     training_start_time = time.time()
-
-
-
-
 
     print("\nStarting PEFT training ...")
     for epoch in range(1, args.epochs + 1):
@@ -210,7 +203,7 @@ def main():
 
 
 
-    # 7. Load best adapter checkpoint for evaluation (gotcha-proof loading)
+    # 7. Load best adapter checkpoint for evaluation
     print(f"\nLoading best adapter from {ckpt_path} ...")
     from peft import PeftModel
     base_model = AutoModelForSequenceClassification.from_pretrained(
